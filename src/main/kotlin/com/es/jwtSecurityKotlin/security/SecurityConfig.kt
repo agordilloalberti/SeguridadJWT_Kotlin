@@ -18,6 +18,8 @@ class SecurityConfig {
         return http
             .csrf { csrf -> csrf.disable() }
             .authorizeHttpRequests { auth -> auth
+                .requestMatchers("/rutas_protegidas/**").authenticated()
+                .requestMatchers("/rutas_publicas/**").permitAll()
                 .anyRequest().authenticated()
             }
             .sessionManagement { session ->
