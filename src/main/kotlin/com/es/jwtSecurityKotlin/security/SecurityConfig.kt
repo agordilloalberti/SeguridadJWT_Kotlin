@@ -3,7 +3,9 @@ package com.es.jwtSecurityKotlin.security
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
+import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.Customizer
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
@@ -21,6 +23,7 @@ class SecurityConfig {
         return http
             .csrf { csrf -> csrf.disable() }
             .authorizeHttpRequests { auth -> auth
+                .requestMatchers("usuarios/login").permitAll()
                 .requestMatchers("/rutas_protegidas/**").authenticated()
                 .requestMatchers("/secretos/**").authenticated()
                 .requestMatchers("/rutas_protegidas/{id}").authenticated()
@@ -38,5 +41,10 @@ class SecurityConfig {
     @Bean
     fun passwordEncode():PasswordEncoder{
         return BCryptPasswordEncoder()
+    }
+
+    @Bean
+    fun autenticationManager(authenticationConfiguration: AuthenticationConfiguration):AuthenticationManager{
+        return authenticationConfiguration.authenticationManager
     }
 }
