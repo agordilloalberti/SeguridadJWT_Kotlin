@@ -62,12 +62,14 @@ class SecurityConfig {
         return authenticationConfiguration.authenticationManager
     }
 
+    @Bean
     fun jwtEncode():JwtEncoder{
         val jwk: JWK = RSAKey.Builder(rsaKeys.publicKey).privateKey(rsaKeys.privateKey).build()
         val jwks : JWKSource<SecurityContext> = ImmutableJWKSet(JWKSet(jwk))
         return NimbusJwtEncoder(jwks)
     }
 
+    @Bean
     fun jwtDecode(): JwtDecoder {
         return NimbusJwtDecoder.withPublicKey(rsaKeys.publicKey).build()
     }
