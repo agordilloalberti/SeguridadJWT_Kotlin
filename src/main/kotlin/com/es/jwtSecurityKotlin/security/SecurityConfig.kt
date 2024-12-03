@@ -68,8 +68,9 @@ class SecurityConfig {
     /*
     MÉTODO PARA CODIFICAR UN JWT
      */
+    @Bean
     fun jwtEncoder(): JwtEncoder {
-        val jwk: JWK = RSAKey.Builder(rsaKeys.publicKey()).privateKey(rsaKeys.privateKey()).build()
+        val jwk: JWK = RSAKey.Builder(rsaKeys.publicKey).privateKey(rsaKeys.privateKey).build()
         val jwks: JWKSource<SecurityContext> = ImmutableJWKSet(JWKSet(jwk))
         return NimbusJwtEncoder(jwks)
     }
@@ -77,8 +78,9 @@ class SecurityConfig {
     /*
     MÉTODO PARA DECODIFICAR UN JWT
      */
+    @Bean
     fun jwtDecoder(): JwtDecoder {
-        return NimbusJwtDecoder.withPublicKey(rsaKeys.publicKey()).build()
+        return NimbusJwtDecoder.withPublicKey(rsaKeys.publicKey).build()
     }
 
 
