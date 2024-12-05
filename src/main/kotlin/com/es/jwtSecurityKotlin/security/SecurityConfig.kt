@@ -40,7 +40,7 @@ class SecurityConfig {
                 .requestMatchers("/usuarios/login").permitAll()
                 .requestMatchers("/rutas_protegidas/recurso2").permitAll()
                 .requestMatchers(HttpMethod.GET,"/rutas_protegidas/recurso/{id}").permitAll()
-                .requestMatchers("/rutas_protegidas/").authenticated()
+                .requestMatchers("/rutas_protegidas/recurso1").authenticated()
                 .requestMatchers(HttpMethod.DELETE,"/rutas_protegidas/recurso/{id}").hasRole("ADMIN")
                 .requestMatchers("/rutas_publicas/**").permitAll()
                 .anyRequest().authenticated()
