@@ -45,6 +45,7 @@ class SecurityConfig {
                 .requestMatchers("/rutas_publicas/**").permitAll()
                 .anyRequest().authenticated()
             } // Los recursos protegidos y publicos
+            .oauth2ResourceServer { oauth2 -> oauth2.jwt(Customizer.withDefaults()) }
             .sessionManagement { session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .httpBasic(Customizer.withDefaults())
             .build()

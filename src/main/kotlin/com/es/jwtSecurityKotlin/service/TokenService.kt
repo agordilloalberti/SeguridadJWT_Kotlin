@@ -2,6 +2,7 @@ package com.es.jwtSecurityKotlin.service
 
 import com.nimbusds.jwt.JWTClaimsSet
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.annotation.Bean
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.oauth2.jwt.JwtClaimsSet
@@ -23,8 +24,7 @@ class TokenService {
 
     fun generarToken(authentication: Authentication) : String {
 
-        val roles: String =
-            authentication.authorities.joinToString(" ") { it.authority } // Contiene los roles del usuario
+        val roles: String = authentication.authorities.joinToString(" ") { it.authority } // Contiene los roles del usuario
 
         val payload: JwtClaimsSet = JwtClaimsSet.builder()
             .issuer("self")
