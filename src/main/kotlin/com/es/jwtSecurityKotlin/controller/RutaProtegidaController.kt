@@ -1,5 +1,6 @@
 package com.es.jwtSecurityKotlin.controller
 
+import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -29,6 +30,14 @@ class RutaProtegidaController {
     @DeleteMapping("/recurso/{id}")
     fun deleteRecursoProtegido (@PathVariable id: String) : String {
         return "Eliminar recurso por su id $id \uD83E\uDD75"
+    }
+
+
+    @GetMapping("/usuario_autenticado")
+    fun saludarUsuarioAutenticado(authentication: Authentication) : String {
+
+        // OBJETIVO ES SALUDAR AL USUARIO AUTENTICADO
+        return "Hola ${authentication.name}, qué tal?"
     }
 
 }

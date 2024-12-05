@@ -39,6 +39,7 @@ class SecurityConfig {
             .authorizeHttpRequests { auth -> auth
                 .requestMatchers("/usuarios/login").permitAll()
                 .requestMatchers("/rutas_protegidas/recurso2").permitAll()
+                .requestMatchers("/rutas_protegidas/usuario_autenticado").authenticated()
                 .requestMatchers(HttpMethod.GET,"/rutas_protegidas/recurso/{id}").permitAll()
                 .requestMatchers("/rutas_protegidas/recurso1").authenticated()
                 .requestMatchers(HttpMethod.DELETE,"/rutas_protegidas/recurso/{id}").hasRole("ADMIN")
