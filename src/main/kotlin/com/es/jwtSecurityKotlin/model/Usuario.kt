@@ -1,11 +1,6 @@
 package com.es.jwtSecurityKotlin.model
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import jakarta.persistence.Table
+import jakarta.persistence.*
 
 @Entity
 @Table(name = "usuarios")
@@ -18,6 +13,15 @@ data class Usuario(
 
     @Column(nullable = false)
     var password: String? = null,
+
+    @Column(nullable = false)
+    var nombre: String? = null,
+
+    @Column(nullable = true)
+    var apellidos: String? =null,
+
+    @Column(nullable = false)
+    var edad: Int? = null,
 
     var roles: String? = null // e.g., "ROLE_USER,ROLE_ADMIN"
 

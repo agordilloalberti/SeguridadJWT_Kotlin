@@ -11,9 +11,9 @@ Vehículos, los cuales tendran un valor monetario.
 
 Administración, la cual tendra el balance de la empresa, cuando un vendedor introduce un coche, su valor se resta al dinero actual mientras que cuando se desguaza un coche su valor mas el 10% se suma, solo el administrador puede acceder a esta tabla
 
-La tabla "Usuarios" contara con la información de cada uno: el id, el nombre de usuario, el nombre, la contraseña, los apellidos, la edad y el rol que tiene este, puede ser o "Vendedor" o "Desguazador" o "Administrador", este último esta definido por defecto y no se pueden añadir mas.
+La tabla "Usuarios" contará con la información de cada uno: el id, el nombre de usuario, el nombre, la contraseña, los apellidos, la edad y el rol que tiene este, puede ser o "Vendedor" o "Desguazador" o "Administrador", este último esta definido por defecto y no se pueden añadir mas.
 
-La tabla "Vehículos" cada uno contara con un id, modelo y valor
+La tabla "Vehículos" cada uno contará con: un id, modelo y valor
 
 La tabla "Administración" tendra una única fila que tendra el capital actual de la empresa, el número de empleados y coches actualmente registrados, cuando se inserta o elimina un coche se debe cambiar el capital de la empresa, cuando se elimine un empleado se debe reflejar en la tabla.
 
