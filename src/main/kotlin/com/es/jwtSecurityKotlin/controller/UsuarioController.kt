@@ -5,7 +5,6 @@ import com.es.jwtSecurityKotlin.service.TokenService
 import com.es.jwtSecurityKotlin.service.UsuarioService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.http.HttpStatusCode
 import org.springframework.http.ResponseEntity
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
@@ -29,29 +28,15 @@ class UsuarioController {
     @Autowired
     private lateinit var tokenService: TokenService
 
-    /*
-    MÉTODO PARA INSERTAR UN USUARIO
-     */
     @PostMapping("/register")
     fun register(
         @RequestBody newUsuario: Usuario
     ) : ResponseEntity<Usuario?>? {
 
-        // Comprobación mínima
-        // -> La obviamos por ahora
-
-        // Llamar al UsuarioService para insertar un usuario
-
-
-        // Devolver el usuario insertado
         return ResponseEntity(null, HttpStatus.CREATED) // Cambiar null por el usuario insertado
 
     }
 
-
-    /*
-    MÉTODO (ENDPOINT) PARA HACER UN LOGIN
-     */
     @PostMapping("/login")
     fun login(@RequestBody usuario: Usuario) : ResponseEntity<Any>? {
 
@@ -62,11 +47,7 @@ class UsuarioController {
             return ResponseEntity(mapOf("mensaje" to "Credenciales incorrectas dude"), HttpStatus.UNAUTHORIZED)
         }
 
-
-        // SI PASAMOS LA AUTENTICACIÓN, SIGNIFICA QUE ESTAMOS BIEN AUTENTICADOS
-        // PASAMOS A GENERAR EL TOKEN
-        var token = ""
-        token = tokenService.generarToken(authentication)
+        var token: String = tokenService.generarToken(authentication)
 
 
         return ResponseEntity(mapOf("token" to token), HttpStatus.CREATED)

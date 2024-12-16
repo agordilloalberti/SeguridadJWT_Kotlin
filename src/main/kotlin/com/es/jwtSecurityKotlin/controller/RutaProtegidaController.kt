@@ -36,7 +36,6 @@ class RutaProtegidaController {
     @GetMapping("/usuario_autenticado")
     fun saludarUsuarioAutenticado(authentication: Authentication) : String {
 
-        // OBJETIVO ES SALUDAR AL USUARIO AUTENTICADO
         return "Hola ${authentication.name}, qué tal?"
     }
 
