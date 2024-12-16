@@ -44,7 +44,7 @@ class UsuarioController {
         try {
             authentication = authenticationManager.authenticate(UsernamePasswordAuthenticationToken(usuario.username, usuario.password))
         } catch (e: AuthenticationException) {
-            return ResponseEntity(mapOf("mensaje" to "Credenciales incorrectas dude"), HttpStatus.UNAUTHORIZED)
+            return ResponseEntity(mapOf("mensaje" to "Credenciales incorrectas"), HttpStatus.UNAUTHORIZED)
         }
 
         var token: String = tokenService.generarToken(authentication)
